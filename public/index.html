@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Cartoon Video Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎨 AI Cartoon Video Generator</h1>
+            <p>Transform your photo into an animated cartoon video</p>
+        </header>
+
+        <main>
+            <!-- Step 1: Camera Capture -->
+            <div id="step1" class="step-container active">
+                <div class="step-header">
+                    <h2>📸 Capture Your Photo</h2>
+                    <p>Position yourself in the camera and take a photo</p>
+                </div>
+                <div class="camera-section">
+                    <div class="video-container">
+                        <video id="video" autoplay playsinline></video>
+                        <canvas id="canvas" style="display: none;"></canvas>
+                    </div>
+                    
+                    <div class="controls">
+                        <button id="startCamera" class="btn btn-primary">Start Camera</button>
+                        <button id="capturePhoto" class="btn btn-success" disabled>Capture Photo</button>
+                        <button id="stopCamera" class="btn btn-secondary" disabled>Stop Camera</button>
+                    </div>
+                </div>
+
+                <div class="preview-section" style="display: none;">
+                    <h3>Preview Your Photo</h3>
+                    <div class="preview-container">
+                        <img id="preview" alt="Captured photo will appear here" />
+                        <div class="no-photo">No photo captured yet</div>
+                    </div>
+                    
+                    <div class="upload-controls">
+                        <button id="uploadPhoto" class="btn btn-upload" disabled>Process Photo</button>
+                        <button id="retakePhoto" class="btn btn-secondary" disabled>Retake Photo</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2: Processing -->
+            <div id="step2" class="step-container" style="display: none;">
+                <div class="step-header">
+                    <h2>🎨 Processing Your Photo</h2>
+                    <p>Converting your photo to cartoon and generating video...</p>
+                </div>
+                <div class="processing-section">
+                    <div class="processing-visual">
+                        <div class="processing-spinner"></div>
+                        <div class="processing-steps">
+                            <div class="process-step active" id="processStep1">
+                                <span class="step-icon">📤</span>
+                                <span class="step-text">Uploading photo</span>
+                            </div>
+                            <div class="process-step" id="processStep2">
+                                <span class="step-icon">🎨</span>
+                                <span class="step-text">Converting to cartoon</span>
+                            </div>
+                            <div class="process-step" id="processStep3">
+                                <span class="step-icon">🎬</span>
+                                <span class="step-text">Generating video</span>
+                            </div>
+                            <div class="process-step" id="processStep4">
+                                <span class="step-icon">✨</span>
+                                <span class="step-text">Finalizing result</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="processing-info">
+                        <p>This usually takes 1-2 minutes. Please wait...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3: Result Display -->
+            <div id="step3" class="step-container" style="display: none;">
+                <div class="step-header">
+                    <h2>🎉 Your Cartoon Video is Ready!</h2>
+                    <p>Watch your result and download or share it</p>
+                </div>
+                <div class="result-section">
+                    <div class="video-display-container">
+                        <div id="videoPlayer" class="video-player">
+                            <video id="resultVideo" controls>
+                                Your browser does not support the video tag.
+                            </video>
+                            <button id="fullscreenBtn" class="fullscreen-btn" title="View Fullscreen">
+                                📺
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="result-actions">
+                        <div class="action-buttons">
+                            <button id="emailBtn" class="btn btn-primary">
+                                📧 Send to Email
+                            </button>
+                            <button id="downloadBtn" class="btn btn-success">
+                                📱 Generate QR Code
+                            </button>
+                            <button id="shareBtn" class="btn btn-secondary">
+                                🔗 Copy Link
+                            </button>
+                        </div>
+                        <div class="restart-section">
+                            <button id="makeNewBtn" class="btn btn-upload">
+                                ✨ Make New
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Email Modal -->
+            <div id="emailModal" class="modal" style="display: none;">
+                <div class="modal-content">
+                    <span class="close" id="closeEmailModal">&times;</span>
+                    <h3>📧 Send Video to Email</h3>
+                    <form id="emailForm">
+                        <input type="email" id="emailInput" placeholder="Enter your email address" required>
+                        <button type="submit" class="btn btn-primary">Send Email</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- QR Code Modal -->
+            <div id="qrModal" class="modal" style="display: none;">
+                <div class="modal-content">
+                    <span class="close" id="closeQrModal">&times;</span>
+                    <h3>📱 Scan QR Code to Download</h3>
+                    <div id="qrCodeContainer"></div>
+                    <p>Scan this QR code with your phone to download the video</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
