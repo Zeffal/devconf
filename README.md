@@ -29,15 +29,6 @@ A TypeScript-based web application that captures photos from your webcam and sen
    - Click "Capture Photo" to take a picture
    - Click "Send to n8n Workflow" to upload the photo
 
-## n8n Webhook Configuration
-
-The application is configured to send photos to:
-```
-https://dev-n8n.fxwebapps.com/webhook/43e92450-5afc-428a-abaa-4cc67de36e2a
-```
-
-The photo data is sent with the field name `"image"` as specified in your requirements.
-
 ## Development
 
 - **Development mode**: `npm run dev` (uses ts-node for hot reloading)
